@@ -1,0 +1,116 @@
+<div id="menu">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container">
+            <a routerLink="{{ auth.isLoggedIn ? '' : 'login' }}"></a>
+            <img
+              class="navbar-brand"
+              [src]="imageSrc"
+              [alt]="imageAlt"
+              style="height: 50px; border-radius: 15px"
+            />
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-end"
+              id="navbarSupportedContent"
+            >
+              <ul class="navbar-nav ml-auto mb-2 mb-lg-0 fw-bold">
+                <div class="d-flex" *ngIf="auth.isLoggedIn; else loggedOut">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="" routerLinkActive="active"
+                      >Từ vựng
+                    </a>
+                  </li>
+                  <li ngbDropdown>
+                    <a
+                      class="nav-link dropdown-toggle"
+                      id="gfg"
+                      ngbDropdownToggle
+                      style="cursor: pointer"
+                    >
+                      Chào {{ auth.username }}
+                    </a>
+                    <ul ngbDropdownMenu="gfg">
+                      <li class="w-auto" ngbDropdownItem>
+                        <i className="fa fa-sign-out"></i>
+                        Đăng xuất
+                      </li>
+                    </ul>
+                  </li>
+                </div>
+                <ng-template #loggedOut>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      routerLink="register"
+                      routerLinkActive="active"
+                    >
+                      <i class="fa fa-user-plus"></i>
+                      Đăng ký
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      routerLink="login"
+                      routerLinkActive="active"
+                    >
+                      <i class="fa fa-sign-in"></i>
+                      Đăng nhập
+                    </a>
+                  </li>
+                </ng-template>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- <Navbar light expand="md" style={{fontWeight:'600'}}>
+              <Link to={auth.isLoggedIn ? "/" : "/login"}><img src={navbarImage} style={{height:'50px', borderRadius:'15px'}}/></Link>
+                  <NavbarToggler onClick={toggle} />
+                  <Collapse isOpen={isOpen} navbar>
+                      <Nav class="ml-auto" style={{fontSize:'18px'}}>
+                          {auth.isLoggedIn ? (
+                              <>
+                                  <NavItem>
+                                      <Link to="/" class='nav-link'>Từ vựng</Link>
+                                  </NavItem>
+                                  <UncontrolledDropdown nav inNavbar>
+                                      <DropdownToggle nav caret>
+                                          Chào {auth.user}
+                                      </DropdownToggle>
+                                      <DropdownMenu right>
+                                          <DropdownItem onClick={logout}>
+                                              <i class='fa fa-sign-out' /> Đăng xuất
+                                          </DropdownItem>
+                                      </DropdownMenu>
+                                  </UncontrolledDropdown>
+                              </>
+                          ) : (
+                              <>
+                                  <NavItem>
+                                      <Link to="/register" class='nav-link'><i class='fa fa-user-plus' />Đăng ký</Link>
+                                  </NavItem>
+                                  <NavItem>
+                                      <Link to="/login" class='nav-link'><i class='fa fa-sign-in' />Đăng nhập</Link>
+                                  </NavItem>
+                              </>
+                          )}
+                      </Nav>
+                  </Collapse>
+              </Navbar> -->
+      </div>
+    </div>
+  </div>
+</div>

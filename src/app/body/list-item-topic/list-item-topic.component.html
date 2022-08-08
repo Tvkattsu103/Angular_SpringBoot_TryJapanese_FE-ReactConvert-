@@ -1,0 +1,27 @@
+<ul>
+  <p>{{ abc }}</p>
+  <li id="0" key="0">
+    <app-item-topic
+      [title]="'Từ vựng tiếng nhật'"
+      [href]="'/vocabulary/1050'"
+      [active]="currentTopicName === 'all' ? 'active' : ''"
+      (click)="changeTopic2($event, 'all', 0)"
+    >
+    </app-item-topic>
+    <!-- <ItemTopicTab href="/vocabulary/1050" title="Từ vựng tiếng nhật" active={currentTopicName === "all" ? "active" : ""} onClick={(e) => changeTopic(e, "all", 0)}/> -->
+  </li>
+  <div *ngIf="topics.length !== 0">
+    <div *ngFor="let topic of topics">
+      <li id="topic.id" key="topic.id">
+        <app-item-topic
+          [title]="topic.name"
+          [href]="'/vocabulary/1050'"
+          [active]="currentTopicName === topic.name ? 'active' : ''"
+          (click)="changeTopic2($event, topic.name, topic.id)"
+        >
+        </app-item-topic>
+        <!-- <ItemTopicTab href="/vocabulary/1050" title={topic.name} active={currentTopicName === topic.name ? "active" : ""} onClick={(e) => changeTopic(e, topic.name, topic.id)}/> -->
+      </li>
+    </div>
+  </div>
+</ul>
